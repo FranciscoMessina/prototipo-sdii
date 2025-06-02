@@ -1,4 +1,3 @@
-'use client'
 
 import { useLocation } from '@tanstack/react-router'
 import { Avatar } from '@/components/ui/avatar'
@@ -27,25 +26,22 @@ import {
     ArchiveBoxIcon,
   ArrowRightStartOnRectangleIcon,
   ChartBarIcon,
-  ChevronDownIcon,
+
   ChevronUpIcon,
-  Cog8ToothIcon,
+ 
   LightBulbIcon,
-  PlusIcon,
+
   ShieldCheckIcon,
   TagIcon,
   UserCircleIcon,
   UsersIcon,
 } from '@heroicons/react/16/solid'
 import {
-  Cog6ToothIcon,
+
   HomeIcon,
-  QuestionMarkCircleIcon,
-  SparklesIcon,
-  Square2StackIcon,
-  TicketIcon,
+ 
 } from '@heroicons/react/20/solid'
-import { Button } from '@headlessui/react'
+
 
 
 function AccountDropdownMenu({ anchor }: { anchor: 'top start' | 'bottom end' }) {
