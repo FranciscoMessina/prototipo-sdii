@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Input, InputGroup } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
 import { Pagination, PaginationPrevious, PaginationNext, PaginationList, PaginationPage, PaginationGap } from '@/components/ui/pagination'
-import { EyeIcon, MagnifyingGlassIcon, PencilSquareIcon } from '@heroicons/react/16/solid'
+import { EyeIcon, MagnifyingGlassIcon } from '@heroicons/react/16/solid'
 
 export const Route = createFileRoute('/pedidos')({
     component: PedidosPage,
