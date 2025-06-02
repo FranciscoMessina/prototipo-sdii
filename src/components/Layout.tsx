@@ -28,10 +28,7 @@ import {
   ChartBarIcon,
 
   ChevronUpIcon,
- 
-  LightBulbIcon,
 
-  ShieldCheckIcon,
   TagIcon,
   UserCircleIcon,
   UsersIcon,
@@ -49,21 +46,13 @@ function AccountDropdownMenu({ anchor }: { anchor: 'top start' | 'bottom end' })
     <DropdownMenu className="min-w-64" anchor={anchor}>
       <DropdownItem href="#">
         <UserCircleIcon />
-        <DropdownLabel>My account</DropdownLabel>
+        <DropdownLabel>Mi cuenta</DropdownLabel>
       </DropdownItem>
       <DropdownDivider />
-      <DropdownItem href="#">
-        <ShieldCheckIcon />
-        <DropdownLabel>Privacy policy</DropdownLabel>
-      </DropdownItem>
-      <DropdownItem href="#">
-        <LightBulbIcon />
-        <DropdownLabel>Share feedback</DropdownLabel>
-      </DropdownItem>
-      <DropdownDivider />
+
       <DropdownItem href="/login">
         <ArrowRightStartOnRectangleIcon />
-        <DropdownLabel>Sign out</DropdownLabel>
+        <DropdownLabel>Salir</DropdownLabel>
       </DropdownItem>
     </DropdownMenu>
   )
