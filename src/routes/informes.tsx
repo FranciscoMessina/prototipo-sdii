@@ -42,7 +42,7 @@ function InformesPage() {
             <DropdownMenu anchor='bottom end'>
               <DropdownItem onClick={() => {
 
-                const promise = new Promise((resolve, reject) => {
+                const promise = new Promise((resolve) => {
                   setTimeout(() => {
                     resolve(true);
                   }, 2000);
@@ -70,7 +70,7 @@ function InformesPage() {
               </DropdownItem >
               <DropdownItem onClick={() => {
 
-                const promise = new Promise((resolve, reject) => {
+                const promise = new Promise((resolve) => {
                   setTimeout(() => {
                     resolve(true);
                   }, 2000);
