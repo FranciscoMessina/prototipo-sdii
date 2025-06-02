@@ -33,9 +33,9 @@ const getClientById = (id: string) => {
       creditLimit: '$250000.00',
       paymentTerms: '30 días',
       orders: [
-        { id: 'ORD-001', date: '15/03/2024', amount: '$12500.00', status: 'Completado' },
-        { id: 'ORD-002', date: '28/02/2024', amount: '$8750.00', status: 'Completado' },
-        { id: 'ORD-003', date: '10/02/2024', amount: '$15300.00', status: 'Completado' }
+        { id: '001', date: '15/03/2024', amount: '$12500.00', status: 'Completado' },
+        { id: '002', date: '28/02/2024', amount: '$8750.00', status: 'Completado' },
+        { id: '003', date: '10/02/2024', amount: '$15300.00', status: 'Completado' }
       ]
     },
     'barry-allen': {
@@ -58,9 +58,9 @@ const getClientById = (id: string) => {
       creditLimit: '$200000.00',
       paymentTerms: '15 días',
       orders: [
-        { id: 'ORD-004', date: '08/03/2024', amount: '$9800.00', status: 'Completado' },
-        { id: 'ORD-005', date: '25/02/2024', amount: '$11200.00', status: 'Completado' },
-        { id: 'ORD-006', date: '15/02/2024', amount: '$7950.00', status: 'En Proceso' }
+        { id: '004', date: '08/03/2024', amount: '$9800.00', status: 'Completado' },
+        { id: '005', date: '25/02/2024', amount: '$11200.00', status: 'Completado' },
+        { id: '006', date: '15/02/2024', amount: '$7950.00', status: 'En Proceso' }
       ]
     },
     'antony-stark': {
@@ -83,9 +83,9 @@ const getClientById = (id: string) => {
       creditLimit: '$1000000.00',
       paymentTerms: '45 días',
       orders: [
-        { id: 'ORD-007', date: '01/03/2024', amount: '$85000.00', status: 'Completado' },
-        { id: 'ORD-008', date: '18/02/2024', amount: '$42500.00', status: 'Completado' },
-        { id: 'ORD-009', date: '05/02/2024', amount: '$67800.00', status: 'Completado' }
+        { id: '007', date: '01/03/2024', amount: '$85000.00', status: 'Completado' },
+        { id: '008', date: '18/02/2024', amount: '$42500.00', status: 'Completado' },
+        { id: '009', date: '05/02/2024', amount: '$67800.00', status: 'Completado' }
       ]
     }
   }
@@ -232,7 +232,7 @@ function ClientDetailPage() {
                     <TableRow key={order.id}>
                       <TableCell className="pl-6">
                         <code className="rounded bg-zinc-950/5 px-1.5 py-0.5 text-xs font-medium text-zinc-950 dark:bg-white/10 dark:text-white">
-                          {order.id}
+                          #{order.id}
                         </code>
                       </TableCell>
                       <TableCell className="font-medium">{order.date}</TableCell>

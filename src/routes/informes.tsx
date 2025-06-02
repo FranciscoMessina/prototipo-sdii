@@ -3,8 +3,9 @@ import { Heading, Subheading } from '@/components/ui/heading'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Select } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import { Dropdown, DropdownButton, DropdownItem, DropdownLabel, DropdownMenu, DropdownDescription  } from '@/components/ui/dropdown'
+import { Dropdown, DropdownButton, DropdownItem, DropdownLabel, DropdownMenu, DropdownDescription } from '@/components/ui/dropdown'
 import { ArrowDownTrayIcon } from '@heroicons/react/16/solid'
+import { toast } from 'sonner'
 
 export const Route = createFileRoute('/informes')({
   component: InformesPage,
@@ -21,7 +22,7 @@ function InformesPage() {
             Analiza el rendimiento y estadísticas
           </p>
         </div>
-        
+
         <div className="flex gap-3">
           <div className="min-w-[140px]">
             <Select defaultValue="mes">
@@ -32,30 +33,77 @@ function InformesPage() {
               <option value="año">Último año</option>
             </Select>
           </div>
-          
+
           <Dropdown>
             <DropdownButton as={Button} >
               <ArrowDownTrayIcon />
               Exportar
             </DropdownButton>
             <DropdownMenu anchor='bottom end'>
-              <DropdownItem>
-                
-                  <DropdownLabel >Exportar como PDF</DropdownLabel>
-                  <DropdownDescription >Informe completo en formato PDF</DropdownDescription>
-               
+              <DropdownItem onClick={() => {
+
+                const promise = new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    resolve(true);
+                  }, 2000);
+                });
+
+
+                toast.promise(promise, {
+                  loading: 'Generando PDF...',
+                  success: {
+                    message: 'PDF listo para descargar',
+                    action: {
+                      label: 'Descargar',
+                      onClick: () => {
+                        console.log('Descargar PDF');
+                      }
+                    }
+                  },
+                  error: 'Error al generar PDF'
+                });
+              }}>
+
+                <DropdownLabel >Exportar como PDF</DropdownLabel>
+                <DropdownDescription >Informe completo en formato PDF</DropdownDescription>
+
               </DropdownItem >
-                <DropdownItem>
+              <DropdownItem onClick={() => {
+
+                const promise = new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    resolve(true);
+                  }, 2000);
+                });
+
+
+                toast.promise(promise, {
+                  loading: 'Generando Excel ...',
+                  success: {
+                    message: 'Excel listo para descargar',
+                    action: {
+                      label: 'Descargar',
+                      onClick: () => {
+                        console.log('Descargar Excel');
+                      }
+                    }
+                  },
+                  error: {
+                    message: 'Error al generar Excel',
+                  }
                
-                  <DropdownLabel >Exportar como Excel</DropdownLabel>
-                  <DropdownDescription >Datos en formato de hoja de cálculo</DropdownDescription>
-              
+                });
+              }}>
+
+                <DropdownLabel >Exportar como Excel</DropdownLabel>
+                <DropdownDescription >Datos en formato de hoja de cálculo</DropdownDescription>
+
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </div>
       </div>
-      
+
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
@@ -76,7 +124,7 @@ function InformesPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
           <div className="p-6">
             <div className="flex items-center">
@@ -95,7 +143,7 @@ function InformesPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
           <div className="p-6">
             <div className="flex items-center">
@@ -114,7 +162,7 @@ function InformesPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
           <div className="p-6">
             <div className="flex items-center">
@@ -134,42 +182,42 @@ function InformesPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
           <div className="border-b border-zinc-950/10 bg-zinc-50/50 px-6 py-4 dark:border-white/10 dark:bg-white/2.5">
-            <Subheading level={2}>Ventas por Producto</Subheading>
+            <Subheading level={2}>Ventas por categoria</Subheading>
           </div>
           <div className="p-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Válvulas Industriales</span>
-                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">€142,500 (29%)</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Cascos Star Wars</span>
+                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">$142,500 (29%)</span>
               </div>
               <div className="w-full bg-zinc-200 rounded-full h-2 dark:bg-zinc-700">
                 <div className="bg-blue-600 h-2 rounded-full" style={{ width: '29%' }}></div>
               </div>
-              
+
               <div className="flex items-center justify-between">
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Componentes Mecánicos</span>
-                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">€118,750 (24%)</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Accesorios Star Wars</span>
+                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">$118,750 (24%)</span>
               </div>
               <div className="w-full bg-zinc-200 rounded-full h-2 dark:bg-zinc-700">
                 <div className="bg-green-600 h-2 rounded-full" style={{ width: '24%' }}></div>
               </div>
-              
+
               <div className="flex items-center justify-between">
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Piezas Fundidas</span>
-                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">€97,400 (20%)</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Cascos Marvel</span>
+                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">$97,400 (20%)</span>
               </div>
               <div className="w-full bg-zinc-200 rounded-full h-2 dark:bg-zinc-700">
                 <div className="bg-amber-600 h-2 rounded-full" style={{ width: '20%' }}></div>
               </div>
-              
+
               <div className="flex items-center justify-between">
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Herramientas Especiales</span>
-                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">€128,700 (27%)</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Accesorios Marvel</span>
+                <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">$128,700 (27%)</span>
               </div>
               <div className="w-full bg-zinc-200 rounded-full h-2 dark:bg-zinc-700">
                 <div className="bg-purple-600 h-2 rounded-full" style={{ width: '27%' }}></div>
@@ -177,7 +225,7 @@ function InformesPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
           <div className="border-b border-zinc-950/10 bg-zinc-50/50 px-6 py-4 dark:border-white/10 dark:bg-white/2.5">
             <Subheading level={2}>Pedidos por Estado</Subheading>
@@ -191,7 +239,7 @@ function InformesPage() {
                 </div>
                 <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">127 pedidos</span>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
@@ -199,7 +247,7 @@ function InformesPage() {
                 </div>
                 <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">45 pedidos</span>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="w-3 h-3 bg-amber-500 rounded-full mr-2"></div>
@@ -207,7 +255,7 @@ function InformesPage() {
                 </div>
                 <span className="text-sm/6 text-zinc-500 dark:text-zinc-400">23 pedidos</span>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
@@ -219,25 +267,23 @@ function InformesPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Top Clients Table */}
       <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
         <div className="border-b border-zinc-950/10 bg-zinc-50/50 px-6 py-4 dark:border-white/10 dark:bg-white/2.5">
           <Subheading level={2}>Top Clientes del Mes</Subheading>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-4 text-sm">
             <div className="flex gap-6">
+
               <span className="text-zinc-600 dark:text-zinc-400">
-                <span className="font-medium text-zinc-950 dark:text-white">10</span> clientes principales
-              </span>
-              <span className="text-zinc-600 dark:text-zinc-400">
-                Facturación total: <span className="font-medium text-zinc-950 dark:text-white">€325,450</span>
+                Facturación total: <span className="font-medium text-zinc-950 dark:text-white">$325,450</span>
               </span>
             </div>
           </div>
         </div>
-        
+
         <div className="overflow-x-auto">
-          <Table>
+          <Table className='px-40 '>
             <TableHead>
               <TableRow>
                 <TableHeader className="pl-6">Cliente</TableHeader>
@@ -249,43 +295,35 @@ function InformesPage() {
             <TableBody>
               <TableRow>
                 <TableCell className="pl-6">
-                  <div className="font-medium text-zinc-950 dark:text-white">Empresa ABC S.L.</div>
-                  <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">Sector Automotriz</div>
+                  <div className="font-medium text-zinc-950 dark:text-white">Clark Kent</div>
+
                 </TableCell>
                 <TableCell className="font-medium">18 pedidos</TableCell>
-                <TableCell className="font-medium">€142,500</TableCell>
+                <TableCell className="font-medium">$42,500</TableCell>
                 <TableCell className="pr-6 font-medium">29.2%</TableCell>
               </TableRow>
-              
+
               <TableRow>
                 <TableCell className="pl-6">
-                  <div className="font-medium text-zinc-950 dark:text-white">Industrias XYZ</div>
-                  <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">Sector Energético</div>
+                  <div className="font-medium text-zinc-950 dark:text-white">Barry Allen</div>
+
                 </TableCell>
                 <TableCell className="font-medium">15 pedidos</TableCell>
-                <TableCell className="font-medium">€128,700</TableCell>
+                <TableCell className="font-medium">$28,700</TableCell>
                 <TableCell className="pr-6 font-medium">26.4%</TableCell>
               </TableRow>
-              
+
               <TableRow>
                 <TableCell className="pl-6">
-                  <div className="font-medium text-zinc-950 dark:text-white">Metalúrgica Del Norte</div>
-                  <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">Sector Metalúrgico</div>
+                  <div className="font-medium text-zinc-950 dark:text-white">Antony Stark</div>
+
                 </TableCell>
                 <TableCell className="font-medium">12 pedidos</TableCell>
-                <TableCell className="font-medium">€118,750</TableCell>
+                <TableCell className="font-medium">$118,750</TableCell>
                 <TableCell className="pr-6 font-medium">24.4%</TableCell>
               </TableRow>
-              
-              <TableRow>
-                <TableCell className="pl-6">
-                  <div className="font-medium text-zinc-950 dark:text-white">Construcciones Beta</div>
-                  <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">Sector Construcción</div>
-                </TableCell>
-                <TableCell className="font-medium">8 pedidos</TableCell>
-                <TableCell className="font-medium">€97,400</TableCell>
-                <TableCell className="pr-6 font-medium">20.0%</TableCell>
-              </TableRow>
+
+
             </TableBody>
           </Table>
         </div>

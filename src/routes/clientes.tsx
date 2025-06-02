@@ -1,16 +1,76 @@
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Heading, Subheading } from '@/components/ui/heading'
 import { Input, InputGroup } from '@/components/ui/input'
 import { Pagination, PaginationGap, PaginationList, PaginationNext, PaginationPage, PaginationPrevious } from '@/components/ui/pagination'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-  import { MagnifyingGlassIcon } from '@heroicons/react/16/solid'
+import { Dialog, DialogTitle, DialogDescription, DialogBody, DialogActions } from '@/components/ui/dialog'
+import { Fieldset, FieldGroup, Field, Label, Description } from '@/components/ui/fieldset'
+import { Select } from '@/components/ui/select'
+import { MagnifyingGlassIcon } from '@heroicons/react/16/solid'
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { toast } from 'sonner'
 
 export const Route = createFileRoute('/clientes')({
   component: ClientesPage,  
 })
 
 function ClientesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    country: '',
+  })
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically send the data to your API
+    
+    // Reset form and close modal
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      postalCode: '',
+      country: '',
+    })
+    setIsModalOpen(false)
+    
+    toast.success('Cliente creado exitosamente!')
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(false)
+    // Reset form when canceling
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      postalCode: '',
+      country: '',
+  
+    })
+  }
+
   return (
     <div className="max-w-7xl mx-auto space-y-10">
       {/* Header */}
@@ -21,7 +81,7 @@ function ClientesPage() {
             Gestiona la información de los clientes
           </p>
         </div>
-        <Button >Nuevo Cliente</Button>
+        <Button onClick={() => setIsModalOpen(true)}>Nuevo Cliente</Button>
       </div>
 
       {/* Search */}
@@ -134,6 +194,127 @@ function ClientesPage() {
           </div>
         </div>
       </div>
+
+      {/* Create Client Modal */}
+      <Dialog open={isModalOpen} onClose={handleCancel} size="lg">
+        <DialogTitle>Crear Nuevo Cliente</DialogTitle>
+        <DialogDescription>
+          Completa la información para agregar un nuevo cliente al sistema.
+        </DialogDescription>
+        <DialogBody>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <Fieldset>
+              <FieldGroup>
+
+                  <Field>
+                    <Label>Nombre Completo</Label>
+                    <Input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder="Ej: Clark Kent"
+                      required
+                    />
+                    
+                  </Field>
+
+                
+            
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <Field>
+                    <Label>Correo Electrónico</Label>
+                    <Input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      placeholder="cliente@empresa.com"
+                      required
+                    />
+                    <Description>Email principal de contacto</Description>
+                  </Field>
+
+                  <Field>
+                    <Label>Teléfono</Label>
+                    <Input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      placeholder="+54 9 11 1234 5678"
+                      required
+                    />
+                    <Description>Número de teléfono con código de país</Description>
+                  </Field>
+                </div>
+
+               
+
+                <Field>
+                  <Label>Dirección</Label>
+                  <Input
+                    type="text"
+                    value={formData.address}
+                    onChange={(e) => handleInputChange('address', e.target.value)}
+                    placeholder="Calle, número, piso, departamento"
+                    required
+                  />
+                  <Description>Dirección completa del cliente</Description>
+                </Field>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <Field>
+                    <Label>Ciudad</Label>
+                    <Input
+                      type="text"
+                      value={formData.city}
+                      onChange={(e) => handleInputChange('city', e.target.value)}
+                      placeholder="Buenos Aires"
+                      required
+                    />
+                  </Field>
+
+                  <Field>
+                    <Label>Código Postal</Label>
+                    <Input
+                      type="text"
+                      value={formData.postalCode}
+                      onChange={(e) => handleInputChange('postalCode', e.target.value)}
+                      placeholder="1425"
+                    />
+                  </Field>
+
+                  <Field>
+                    <Label>País</Label>
+                    <Select
+                      value={formData.country}
+                      onChange={(e) => handleInputChange('country', e.target.value)}
+                      required
+                    >
+                      <option value="">Seleccionar país</option>
+                      <option value="Argentina">Argentina</option>
+                      <option value="Brasil">Brasil</option>
+                      <option value="Chile">Chile</option>
+                      <option value="Colombia">Colombia</option>
+                      <option value="México">México</option>
+                      <option value="España">España</option>
+                      <option value="Estados Unidos">Estados Unidos</option>
+                      <option value="Otro">Otro</option>
+                    </Select>
+                  </Field>
+                </div>
+              </FieldGroup>
+            </Fieldset>
+          </form>
+        </DialogBody>
+        <DialogActions>
+          <Button type="button" plain onClick={handleCancel}>
+            Cancelar
+          </Button>
+          <Button type="submit" onClick={handleSubmit}>
+            Crear Cliente
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 } 

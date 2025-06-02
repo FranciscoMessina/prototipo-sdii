@@ -22,12 +22,10 @@ const getProductById = (id: string) => {
       stock: 1250,
       status: 'En Stock',
       specifications: {
-        material: 'Acero inoxidable 316L',
-        presion: '1500 PSI',
-        temperatura: '-20°C a 250°C',
-        diametro: '2" - 12"',
-        conexion: 'Bridada',
-        certificacion: 'API 6D, ISO 14313'
+        material: 'Fibra de Vidrio',
+        medidas: '25x25x10cm',
+        color: 'Negro',
+        peso: '1.5kg'
       },
       supplier: 'Proveedor Industrial S.A.',
       lastUpdated: '15/03/2024',
@@ -44,12 +42,10 @@ const getProductById = (id: string) => {
       stock: 890,
       status: 'En Stock',
       specifications: {
-        material: 'Aleación de aluminio',
-        precision: '±0.01mm',
-        dureza: '58-62 HRC',
-        acabado: 'Anodizado',
-        tolerancia: 'ISO 2768-m',
-        peso: '2.5 kg'
+        material: 'Fibra de Vidrio',
+        medidas: '25x25x10cm',
+        color: 'Negro',
+        peso: '1.5kg'
       },
       supplier: 'Componentes de Precisión Ltda.',
       lastUpdated: '12/03/2024',
@@ -152,14 +148,7 @@ function ProductDetailPage() {
                     <Badge color={getBadgeColor(product.status)}>{product.status}</Badge>
                   </div>
                 </div>
-                <div>
-                  <div className="text-sm/6 font-medium text-zinc-500 dark:text-zinc-400">Stock Actual</div>
-                  <div className="mt-1 text-sm/6 text-zinc-950 dark:text-white">{product.stock.toLocaleString()} unidades</div>
-                </div>
-                <div>
-                  <div className="text-sm/6 font-medium text-zinc-500 dark:text-zinc-400">Punto de Reorden</div>
-                  <div className="mt-1 text-sm/6 text-zinc-950 dark:text-white">{product.reorderPoint} unidades</div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -196,12 +185,9 @@ function ProductDetailPage() {
                 <span className="text-sm/6 text-zinc-600 dark:text-zinc-400">Stock disponible</span>
                 <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">{product.stock.toLocaleString()}</span>
               </div>
+      
               <div className="flex justify-between items-center">
-                <span className="text-sm/6 text-zinc-600 dark:text-zinc-400">Punto de reorden</span>
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">{product.reorderPoint}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm/6 text-zinc-600 dark:text-zinc-400">Tiempo de entrega</span>
+                <span className="text-sm/6 text-zinc-600 dark:text-zinc-400">Tiempo de preparacion</span>
                 <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">{product.leadTime}</span>
               </div>
               <div className="pt-4 border-t border-zinc-950/10 dark:border-white/10">
@@ -216,21 +202,7 @@ function ProductDetailPage() {
           </div>
 
           {/* Supplier Info */}
-          <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
-            <div className="border-b border-zinc-950/10 bg-zinc-50/50 px-6 py-4 dark:border-white/10 dark:bg-white/2.5">
-              <Subheading level={3}>Información del Proveedor</Subheading>
-            </div>
-            <div className="p-6 space-y-4">
-              <div>
-                <div className="text-sm/6 font-medium text-zinc-500 dark:text-zinc-400">Proveedor</div>
-                <div className="mt-1 text-sm/6 text-zinc-950 dark:text-white">{product.supplier}</div>
-              </div>
-              <div>
-                <div className="text-sm/6 font-medium text-zinc-500 dark:text-zinc-400">Última actualización</div>
-                <div className="mt-1 text-sm/6 text-zinc-950 dark:text-white">{product.lastUpdated}</div>
-              </div>
-            </div>
-          </div>
+    
 
        
         </div>

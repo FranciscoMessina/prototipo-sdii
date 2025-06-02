@@ -1,7 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { Heading, Subheading } from '@/components/ui/heading'
 import { Badge } from '@/components/ui/badge'
-import { Link } from '@/components/ui/link'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -17,17 +16,17 @@ function HomePage() {
       </div>
       
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-gradient-to-r from-blue-500 to-blue-600 dark:border-white/10">
           <div className="p-6 text-white">
-            <div className="flex items-center">
+            <div className="flex items-start">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-white bg-opacity-30 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">#</span>
+                  <span className="text-black text-sm font-bold">#</span>
                 </div>
               </div>
               <div className="ml-5 flex-1">
-                <div className="text-sm/6 font-medium text-blue-100">Pedidos Activos</div>
+                <div className="text-sm/6 font-medium text-blue-100">Pedidos Pendientes</div>
                 <div className="text-2xl font-semibold text-white">73</div>
               </div>
             </div>
@@ -42,12 +41,12 @@ function HomePage() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 bg-white bg-opacity-30 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">€</span>
+                  <span className=" text-sm  text-green-800 font-bold">$</span>
                 </div>
               </div>
               <div className="ml-5 flex-1">
                 <div className="text-sm/6 font-medium text-green-100">Ventas del Mes</div>
-                <div className="text-2xl font-semibold text-white">€487K</div>
+                <div className="text-2xl font-semibold text-white">$487.000</div>
               </div>
             </div>
             <div className="mt-4">
@@ -75,24 +74,7 @@ function HomePage() {
           </div>
         </div>
         
-        <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-gradient-to-r from-purple-500 to-purple-600 dark:border-white/10">
-          <div className="p-6 text-white">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-white bg-opacity-30 rounded-md flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">👥</span>
-                </div>
-              </div>
-              <div className="ml-5 flex-1">
-                <div className="text-sm/6 font-medium text-purple-100">Clientes Activos</div>
-                <div className="text-2xl font-semibold text-white">42</div>
-              </div>
-            </div>
-            <div className="mt-4">
-              <div className="text-sm/6 text-purple-100">5 nuevos este mes</div>
-            </div>
-          </div>
-        </div>
+       
       </div>
       
       {/* Content Grid */}
@@ -105,22 +87,28 @@ function HomePage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between rounded-lg border border-zinc-950/10 p-4 dark:border-white/10">
                 <div>
-                  <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">#PED-001</p>
-                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Empresa ABC S.L.</p>
+                  <Link to="/pedidos/$id" params={{ id: '001' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    #001
+                  </Link>
+                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Clark Kent</p>
                 </div>
                 <Badge color="blue">En Producción</Badge>
               </div>
               <div className="flex items-center justify-between rounded-lg border border-zinc-950/10 p-4 dark:border-white/10">
                 <div>
-                  <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">#PED-002</p>
-                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Industrias XYZ</p>
+                  <Link to="/pedidos/$id" params={{ id: '002' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    #002
+                  </Link>
+                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Barry Allen</p>
                 </div>
                 <Badge color="amber">Pendiente</Badge>
               </div>
               <div className="flex items-center justify-between rounded-lg border border-zinc-950/10 p-4 dark:border-white/10">
                 <div>
-                  <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">#PED-003</p>
-                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Metalúrgica Del Norte</p>
+                  <Link to="/pedidos/$id" params={{ id: '003' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                    #003
+                  </Link>
+                  <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">Antony Stark</p>
                 </div>
                 <Badge color="green">Completado</Badge>
               </div>
@@ -137,90 +125,51 @@ function HomePage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/20">
-                    <span className="text-lg">⚙️</span>
+                    <span className="text-lg">🪖</span>
                   </div>
                   <div>
-                    <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">Válvulas Industriales</p>
-                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">€142,500</p>
+                    <Link to="/productos/$id" params={{ id: 'VI-2024' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                      Casco Stormtrooper
+                    </Link>
+                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">$2,850</p>
                   </div>
                 </div>
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">29%</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">35%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-green-50 dark:bg-green-900/20">
-                    <span className="text-lg">🔧</span>
+                    <span className="text-lg">⛑️</span>
                   </div>
                   <div>
-                    <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">Herramientas Especiales</p>
-                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">€128,700</p>
+                    <Link to="/productos/$id" params={{ id: 'CM-450' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                      Casco Boba Fett
+                    </Link>
+                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">$2,200</p>
                   </div>
                 </div>
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">27%</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">28%</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-50 dark:bg-purple-900/20">
-                    <span className="text-lg">🔩</span>
+                    <span className="text-lg">🎭</span>
                   </div>
                   <div>
-                    <p className="text-sm/6 font-medium text-zinc-950 dark:text-white">Componentes Mecánicos</p>
-                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">€118,750</p>
+                    <Link to="/productos/$id" params={{ id: 'DV-750' }} className="text-sm/6 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                      Casco Darth Vader
+                    </Link>
+                    <p className="text-sm/6 text-zinc-500 dark:text-zinc-400">$3,450</p>
                   </div>
                 </div>
-                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">24%</span>
+                <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">25%</span>
               </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Quick Actions */}
-      <div className="overflow-hidden rounded-xl border border-zinc-950/10 bg-white dark:border-white/10 dark:bg-zinc-900">
-        <div className="border-b border-zinc-950/10 bg-zinc-50/50 px-6 py-4 dark:border-white/10 dark:bg-white/2.5">
-          <Subheading level={2}>Accesos Rápidos</Subheading>
-        </div>
-        <div className="p-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link 
-              href="/pedidos" 
-              className="flex flex-col items-center rounded-lg border border-zinc-950/10 p-4 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:hover:bg-zinc-800"
-            >
-              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/20">
-                <span className="text-xl">📋</span>
-              </div>
-              <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Nuevo Pedido</span>
-            </Link>
-            <Link 
-              href="/clientes" 
-              className="flex flex-col items-center rounded-lg border border-zinc-950/10 p-4 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:hover:bg-zinc-800"
-            >
-              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-green-50 dark:bg-green-900/20">
-                <span className="text-xl">👥</span>
-              </div>
-              <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Agregar Cliente</span>
-            </Link>
-            <Link 
-              href="/productos" 
-              className="flex flex-col items-center rounded-lg border border-zinc-950/10 p-4 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:hover:bg-zinc-800"
-            >
-              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-50 dark:bg-purple-900/20">
-                <span className="text-xl">📦</span>
-              </div>
-              <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Ver Inventario</span>
-            </Link>
-            <Link 
-              href="/informes" 
-              className="flex flex-col items-center rounded-lg border border-zinc-950/10 p-4 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:hover:bg-zinc-800"
-            >
-              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-900/20">
-                <span className="text-xl">📊</span>
-              </div>
-              <span className="text-sm/6 font-medium text-zinc-950 dark:text-white">Ver Informes</span>
-            </Link>
-          </div>
-        </div>
-      </div>
+    
     </div>
   )
 }

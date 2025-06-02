@@ -1,17 +1,72 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Heading, Subheading } from '@/components/ui/heading'
 import { Badge } from '@/components/ui/badge'
 import { Input, InputGroup } from '@/components/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Pagination, PaginationPrevious, PaginationNext, PaginationList, PaginationPage, PaginationGap } from '@/components/ui/pagination'
+import { Dialog, DialogTitle, DialogDescription, DialogBody, DialogActions } from '@/components/ui/dialog'
+import { Fieldset, FieldGroup, Field, Label, Description } from '@/components/ui/fieldset'
+import { Select } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 import { EyeIcon, MagnifyingGlassIcon } from '@heroicons/react/16/solid'
+import { toast } from 'sonner'
 
 export const Route = createFileRoute('/productos')({
   component: ProductosPage,
 })
 
 function ProductosPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    code: '',
+    category: '',
+    price: '',
+    stock: '',
+    description: ''
+  })
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically send the data to your API
+   
+    
+    // Reset form and close modal
+    setFormData({
+      name: '',
+      code: '',
+      category: '',
+      price: '',
+      stock: '',
+      description: ''
+    })
+    setIsModalOpen(false)
+    
+    toast.success('Producto creado exitosamente!')
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(false)
+    // Reset form when canceling
+    setFormData({
+      name: '',
+      code: '',
+      category: '',
+      price: '',
+      stock: '',
+      description: ''
+    })
+  }
+
   return (
     <div className="max-w-7xl mx-auto space-y-10">
       {/* Header */}
@@ -22,7 +77,7 @@ function ProductosPage() {
             Gestiona el catálogo de productos de la fábrica
           </p>
         </div>
-        <Button>Nuevo Producto</Button>
+          <Button onClick={() => setIsModalOpen(true)}>Nuevo Producto</Button>
       </div>
 
       {/* Search */}
@@ -218,6 +273,110 @@ function ProductosPage() {
           </div>
         </div>
       </div>
+
+      {/* Create Product Modal */}
+      <Dialog open={isModalOpen} onClose={handleCancel} size="lg">
+        <DialogTitle>Crear Nuevo Producto</DialogTitle>
+        <DialogDescription>
+          Completa la información para agregar un nuevo producto al catálogo.
+        </DialogDescription>
+        <DialogBody>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <Fieldset>
+              <FieldGroup>
+                <Field>
+                  <Label>Nombre del Producto</Label>
+                  <Input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    placeholder="Ej: Casco Stormtrooper"
+                    required
+                  />
+                  <Description>El nombre que aparecerá en el catálogo</Description>
+                </Field>
+
+                <Field>
+                  <Label>Código del Producto</Label>
+                  <Input
+                    type="text"
+                    value={formData.code}
+                    onChange={(e) => handleInputChange('code', e.target.value)}
+                    placeholder="Ej: ST-2024"
+                    required
+                  />
+                  <Description>Código único para identificar el producto</Description>
+                </Field>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <Field>
+                    <Label>Categoría</Label>
+                    <Select
+                      value={formData.category}
+                      onChange={(e) => handleInputChange('category', e.target.value)}
+                      required
+                    >
+                      <option value="">Seleccionar categoría</option>
+                      <option value="Cascos">Cascos</option>
+                      <option value="Armaduras">Armaduras</option>
+                      <option value="Accesorios">Accesorios</option>
+                      <option value="Armas">Armas de utilería</option>
+                    </Select>
+                  </Field>
+
+                  
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <Field>
+                    <Label>Precio</Label>
+                    <Input
+                      type="number"
+                      step="0.01"
+                      value={formData.price}
+                      onChange={(e) => handleInputChange('price', e.target.value)}
+                      placeholder="0.00"
+                      required
+                    />
+                    <Description>Precio en USD</Description>
+                  </Field>
+
+                  <Field>
+                    <Label>Stock Inicial</Label>
+                    <Input
+                      type="number"
+                      value={formData.stock}
+                      onChange={(e) => handleInputChange('stock', e.target.value)}
+                      placeholder="0"
+                      required
+                    />
+                    <Description>Cantidad inicial en inventario</Description>
+                  </Field>
+                </div>
+
+                <Field>
+                  <Label>Descripción</Label>
+                  <Textarea
+                    value={formData.description}
+                    onChange={(e) => handleInputChange('description', e.target.value)}
+                    placeholder="Descripción detallada del producto..."
+                    rows={3}
+                  />
+                  <Description>Descripción opcional del producto</Description>
+                </Field>
+              </FieldGroup>
+            </Fieldset>
+          </form>
+        </DialogBody>
+        <DialogActions>
+          <Button type="button" plain onClick={handleCancel}>
+            Cancelar
+          </Button>
+          <Button type="submit" onClick={handleSubmit}>
+            Crear Producto
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 } 
