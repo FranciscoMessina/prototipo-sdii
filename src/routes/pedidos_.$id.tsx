@@ -26,7 +26,7 @@ const getOrderById = (id: string) => {
       deliveryDate: '15/03/2024',
       status: 'En Producción',
       priority: 'Normal',
-      notes: 'Válvulas para sistema de refrigeración industrial. Especificaciones técnicas según norma ISO 14313.',
+      notes: '',
       shippingAddress: {
         street: 'Av. Industrial 1234',
         city: 'Buenos Aires',
@@ -55,7 +55,7 @@ const getOrderById = (id: string) => {
       deliveryDate: '22/03/2024',
       status: 'Pendiente',
       priority: 'Alta',
-      notes: 'Componentes para línea de producción. Requiere certificación de calidad antes del envío.',
+      notes: '',
       shippingAddress: {
         street: 'Polígono Industrial Norte 45',
         city: 'Córdoba',
@@ -84,7 +84,7 @@ const getOrderById = (id: string) => {
       deliveryDate: '10/03/2024',
       status: 'Completado',
       priority: 'Normal',
-      notes: 'Piezas fundidas según especificaciones técnicas del cliente. Entregado según cronograma.',
+      notes: '',
       shippingAddress: {
         street: 'Zona Franca 789',
         city: 'Rosario',

@@ -38,7 +38,7 @@ function PedidosPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         // Here you would typically send the data to your API
-        
+
         // Reset form and close modal
         setFormData({
             clientId: '',
@@ -49,7 +49,7 @@ function PedidosPage() {
             notes: ''
         })
         setIsModalOpen(false)
-        
+
         toast.success('Pedido creado exitosamente!')
     }
 
@@ -136,6 +136,7 @@ function PedidosPage() {
                                 <TableHeader>Producto</TableHeader>
                                 <TableHeader>Cantidad</TableHeader>
                                 <TableHeader>Fecha Entrega</TableHeader>
+                                <TableHeader>Canal de Venta</TableHeader>
                                 <TableHeader>Estado</TableHeader>
                             </TableRow>
                         </TableHead>
@@ -164,7 +165,7 @@ function PedidosPage() {
                                 </TableCell>
                                 <TableCell>
                                     <Link to="/productos/$id" params={{ id: 'VI-2024' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <EyeIcon className="h-4 w-4 text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400" />
                                             <div className="font-medium text-zinc-950 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Casco Stormtrooper</div>
 
@@ -179,6 +180,9 @@ function PedidosPage() {
                                     <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">En 5 días</div>
                                 </TableCell>
                                 <TableCell>
+                                    <Badge color="cyan">Propio</Badge>
+                                </TableCell>
+                                <TableCell>
                                     <Badge color="blue">En Producción</Badge>
                                 </TableCell>
                             </TableRow>
@@ -186,7 +190,7 @@ function PedidosPage() {
                             <TableRow>
                                 <TableCell>
                                     <Link to="/pedidos/$id" params={{ id: '002' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <code className="rounded bg-zinc-950/5 px-1.5 py-0.5 text-xs font-medium text-zinc-950 dark:bg-white/10 dark:text-white hover:bg-blue-50 dark:hover:bg-blue-900/30">
                                                 #002
                                             </code>
@@ -196,7 +200,7 @@ function PedidosPage() {
                                 </TableCell>
                                 <TableCell>
                                     <Link to="/clientes/$id" params={{ id: 'barry-allen' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <EyeIcon className="h-4 w-4 text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400" />
                                             <div>
                                                 <div className="font-medium text-zinc-950 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Barry Allen</div>
@@ -207,12 +211,9 @@ function PedidosPage() {
                                 </TableCell>
                                 <TableCell>
                                     <Link to="/productos/$id" params={{ id: 'CM-450' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <EyeIcon className="h-4 w-4 text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400" />
                                             <div className="font-medium text-zinc-950 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Casco Boba Fett</div>
-
-
-
                                         </div>
                                     </Link>
                                 </TableCell>
@@ -222,6 +223,9 @@ function PedidosPage() {
                                     <div className="text-sm/6 text-zinc-500 dark:text-zinc-400">En 12 días</div>
                                 </TableCell>
                                 <TableCell>
+                                    <Badge color="orange">MercadoLibre</Badge>
+                                </TableCell>
+                                <TableCell>
                                     <Badge color="amber">Pendiente</Badge>
                                 </TableCell>
                             </TableRow>
@@ -229,7 +233,7 @@ function PedidosPage() {
                             <TableRow>
                                 <TableCell>
                                     <Link to="/pedidos/$id" params={{ id: '003' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <code className="rounded bg-zinc-950/5 px-1.5 py-0.5 text-xs font-medium text-zinc-950 dark:text-white">
                                                 #003
                                             </code>
@@ -239,7 +243,7 @@ function PedidosPage() {
                                 </TableCell>
                                 <TableCell>
                                     <Link to="/clientes/$id" params={{ id: 'antony-stark' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <EyeIcon className="h-4 w-4 text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400" />
                                             <div>
                                                 <div className="font-medium text-zinc-950 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">Antony Stark</div>
@@ -250,7 +254,7 @@ function PedidosPage() {
                                 </TableCell>
                                 <TableCell>
                                     <Link to="/productos/$id" params={{ id: 'PF-100' }} className="block hover:bg-zinc-50 dark:hover:bg-zinc-800/50 px-4 py-2 rounded">
-                                    <div className="flex items-start leading-4 gap-2">
+                                        <div className="flex items-start leading-4 gap-2">
                                             <EyeIcon className="h-4 w-4 text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400" />
                                             <div className="font-medium text-zinc-950 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"> Casco Iron Man</div>
 
@@ -263,6 +267,9 @@ function PedidosPage() {
                                 <TableCell>
                                     <div className="font-medium">10/03/2024</div>
                                     <div className="text-sm/6 text-green-600 dark:text-green-400">Completado</div>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge color="cyan">Propio</Badge>
                                 </TableCell>
                                 <TableCell>
                                     <Badge color="green">Completado</Badge>

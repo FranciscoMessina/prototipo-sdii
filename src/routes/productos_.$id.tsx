@@ -47,7 +47,7 @@ const getProductById = (id: string) => {
         color: 'Negro',
         peso: '1.5kg'
       },
-      supplier: 'Componentes de Precisión Ltda.',
+ 
       lastUpdated: '12/03/2024',
       reorderPoint: 50,
       leadTime: '7 días'
