@@ -348,6 +348,9 @@ function OrderDetailPage() {
               <Button className="w-full justify-start" outline>
                 Contactar Cliente
               </Button>
+              <Button className="w-full justify-start" outline>
+                Iniciar Devolución
+              </Button>
             </div>
           </div>
         </div>
