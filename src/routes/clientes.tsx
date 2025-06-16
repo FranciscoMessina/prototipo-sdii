@@ -6,7 +6,6 @@ import { Pagination, PaginationGap, PaginationList, PaginationNext, PaginationPa
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Dialog, DialogTitle, DialogDescription, DialogBody, DialogActions } from '@/components/ui/dialog'
 import { Fieldset, FieldGroup, Field, Label, Description } from '@/components/ui/fieldset'
-import { Select } from '@/components/ui/select'
 import { MagnifyingGlassIcon } from '@heroicons/react/16/solid'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { toast } from 'sonner'
