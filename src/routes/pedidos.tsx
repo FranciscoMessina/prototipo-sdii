@@ -341,7 +341,7 @@ function PedidosPage() {
                                     </Field>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <Field>
                                         <Label>Cantidad</Label>
                                         <Input
@@ -355,15 +355,7 @@ function PedidosPage() {
                                         <Description>Número de unidades</Description>
                                     </Field>
 
-                                    <Field>
-                                        <Label>Fecha de Entrega</Label>
-                                        <Input
-                                            type="date"
-                                            value={formData.deliveryDate}
-                                            onChange={(e) => handleInputChange('deliveryDate', e.target.value)}
-                                            required
-                                        />
-                                    </Field>
+                            
 
                                     <Field>
                                         <Label>Prioridad</Label>

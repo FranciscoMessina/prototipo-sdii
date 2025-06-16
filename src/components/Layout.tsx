@@ -50,7 +50,7 @@ function AccountDropdownMenu({ anchor }: { anchor: 'top start' | 'bottom end' })
       </DropdownItem>
       <DropdownDivider />
 
-      <DropdownItem href="/login">
+      <DropdownItem href="#">
         <ArrowRightStartOnRectangleIcon />
         <DropdownLabel>Salir</DropdownLabel>
       </DropdownItem>

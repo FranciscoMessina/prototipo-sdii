@@ -140,14 +140,16 @@ function OrderDetailPage() {
   return (
     <div className="max-w-7xl mx-auto space-y-10">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link to="/pedidos">
+      <Link to="/pedidos">
             <Button plain>
               <ArrowLeftIcon />
               Volver a pedidos
             </Button>
           </Link>
+      <div className="flex items-center justify-between">
+   
+        <div className="flex items-center gap-4">
+       
           <div>
             <Heading>Pedido #{order.id}</Heading>
             <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">

@@ -338,7 +338,7 @@ function ProductosPage() {
                       placeholder="0.00"
                       required
                     />
-                    <Description>Precio en USD</Description>
+                
                   </Field>
 
                   <Field>

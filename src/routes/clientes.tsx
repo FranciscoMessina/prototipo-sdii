@@ -250,58 +250,19 @@ function ClientesPage() {
                
 
                 <Field>
-                  <Label>Dirección</Label>
+                  <Label>DNI</Label>
                   <Input
                     type="text"
                     value={formData.address}
                     onChange={(e) => handleInputChange('address', e.target.value)}
-                    placeholder="Calle, número, piso, departamento"
+                    placeholder="99.999.999"
                     required
                   />
-                  <Description>Dirección completa del cliente</Description>
+               
                 </Field>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  <Field>
-                    <Label>Ciudad</Label>
-                    <Input
-                      type="text"
-                      value={formData.city}
-                      onChange={(e) => handleInputChange('city', e.target.value)}
-                      placeholder="Buenos Aires"
-                      required
-                    />
-                  </Field>
-
-                  <Field>
-                    <Label>Código Postal</Label>
-                    <Input
-                      type="text"
-                      value={formData.postalCode}
-                      onChange={(e) => handleInputChange('postalCode', e.target.value)}
-                      placeholder="1425"
-                    />
-                  </Field>
-
-                  <Field>
-                    <Label>País</Label>
-                    <Select
-                      value={formData.country}
-                      onChange={(e) => handleInputChange('country', e.target.value)}
-                      required
-                    >
-                      <option value="">Seleccionar país</option>
-                      <option value="Argentina">Argentina</option>
-                      <option value="Brasil">Brasil</option>
-                      <option value="Chile">Chile</option>
-                      <option value="Colombia">Colombia</option>
-                      <option value="México">México</option>
-                      <option value="España">España</option>
-                      <option value="Estados Unidos">Estados Unidos</option>
-                      <option value="Otro">Otro</option>
-                    </Select>
-                  </Field>
-                </div>
+               
+                
               </FieldGroup>
             </Fieldset>
           </form>
